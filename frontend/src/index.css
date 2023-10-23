@@ -1,0 +1,72 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 15px;
+}
+th {
+  font-weight: normal;
+  text-align: left;
+  padding: 5px;
+  font-weight: 500;
+}
+td {
+  color: #191717;
+  padding: 5px;
+}
+td span {
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+}
+tr:nth-last-child(even) {
+  background-color: #f8f8f4;
+  border-bottom: 1px solid #f8f8f4;
+  border-left: 1px solid #f8f8f4;
+  border-right: 1px solid #f8f8f4;
+}
+
+.userbar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.userbar div {
+  border-radius: 3px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+.userbar a {
+  padding: 2px 8px;
+}
+.userbar .ub-u {
+  border: 1px solid #c0c0c0;
+}
+.userbar .ub-u a {
+  color: #5c5c5c !important;
+}
+.userbar .ub-t {
+  border: 1px solid #c0c0c0;
+}
+.userbar .ub-t a {
+  color: #5c5c5c !important;
+}
+.userbar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.ub-p {
+  background-color: #4e90f1;
+  border: 1px solid #4c8ef1;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 1px 0;
+  box-shadow: #4e90f1 0 0 0 1px, rgba(255, 255, 255, 0.15) 0 1px 0 inset,
+    rgba(0, 0, 0, 0.25) 0 1px 1px;
+  color: #fff;
+}
+
+.guest {
+  background: #ffffc2;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+}
