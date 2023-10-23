@@ -27,7 +27,6 @@ tr:nth-last-child(even) {
 
 .userbar {
   display: flex;
-  justify-content: space-between;
   margin-top: 20px;
 }
 .userbar div {

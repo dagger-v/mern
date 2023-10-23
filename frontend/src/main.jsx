@@ -12,6 +12,7 @@ import App from "./App.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import PrivateRoute from "./components/PrivateRoute";
+import PostTopic from "./components/PostTopic";
 import HomeScreen from "./screens/HomeScreen.jsx";
 import LoginScreen from "./screens/LoginScreen.jsx";
 import RegisterScreen from "./screens/RegisterScreen.jsx";
@@ -25,6 +26,9 @@ const router = createBrowserRouter(
       <Route path="/register" element={<RegisterScreen />} />
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
+      </Route>
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/create" element={<PostTopic />} />
       </Route>
     </Route>
   )
