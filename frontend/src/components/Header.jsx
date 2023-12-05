@@ -26,15 +26,28 @@ const Header = () => {
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
-        <Container>
+        <Container className="nav_container">
           <LinkContainer to="/">
-            <Navbar.Brand>MERN Auth</Navbar.Brand>
+            <Navbar.Brand>Verdant</Navbar.Brand>
+          </LinkContainer>
+          <LinkContainer to="/articles" className="nav_links">
+            <Nav.Link>Articles</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/categories" className="nav_links">
+            <Nav.Link>Categories</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/contact" className="nav_links">
+            <Nav.Link>Contact Us</Nav.Link>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               {userInfo ? (
                 <>
+                  <LinkContainer to="/write">
+                    <Nav.Link>Write Article</Nav.Link>
+                  </LinkContainer>
+
                   <NavDropdown title={userInfo.name} id="username">
                     <LinkContainer to="/profile">
                       <NavDropdown.Item>Profile</NavDropdown.Item>

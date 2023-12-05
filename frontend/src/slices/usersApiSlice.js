@@ -30,6 +30,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    write: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/write`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -38,4 +45,5 @@ export const {
   useLogoutMutation,
   useRegisterMutation,
   useUpdateUserMutation,
+  useWriteMutation,
 } = usersApiSlice;

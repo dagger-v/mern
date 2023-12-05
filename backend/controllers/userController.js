@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
 import User from "../models/userModel.js";
+import Article from "../models/articleModel.js";
 
 // POST /api/users/auth
 const authUser = asyncHandler(async (req, res) => {
@@ -36,6 +37,8 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
+    member: true,
+    admin: false,
   });
 
   if (user) {
@@ -44,6 +47,8 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      member: user.member,
+      admin: user.admin,
     });
   } else {
     res.status(400);
@@ -93,10 +98,39 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
+// POST /write
+const writeArticle = asyncHandler(async (req, res) => {
+  const { title, content } = req.body;
+
+  const articleExists = await Article.findOne({ title });
+
+  if (articleExists) {
+    res.status(400);
+    throw new Error("Article Already Exists!");
+  }
+
+  const article = await Article.create({
+    title,
+    content,
+  });
+
+  if (article) {
+    res.status(201).json({
+      _id: article._id,
+      title: article.title,
+      content: article.content,
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid Article Data");
+  }
+});
+
 export {
   authUser,
   registerUser,
   logoutUser,
   getUserProfile,
   updateUserProfile,
+  writeArticle,
 };

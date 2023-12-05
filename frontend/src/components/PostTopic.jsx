@@ -1,4 +1,4 @@
-import CreateTopic from "./CreateTopic";
+import CreateTopic from "../screens/CreateTopic";
 
 const PostTopic = () => {
   return (

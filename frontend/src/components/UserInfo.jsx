@@ -1,14 +1,8 @@
-import { Navbar, Nav, Container, NavDropdown, Badge } from "react-bootstrap";
-import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
 
 const UserInfo = () => {
   const { userInfo } = useSelector((state) => state.auth);
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   return (
     <>
@@ -18,7 +12,7 @@ const UserInfo = () => {
             <a href="">{userInfo.name}</a>
           </div>
           <div class="ub-p">
-            <a href="/">New Topic</a>
+            <a href="/topic/create">New Topic</a>
           </div>
         </div>
       ) : (

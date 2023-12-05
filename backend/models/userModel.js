@@ -16,6 +16,8 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    member: { type: Boolean, default: true },
+    admin: { type: Boolean, default: false },
   },
   {
     timestamps: true,
