@@ -20,9 +20,8 @@
   gap: 20px;
 }
 
-.first,
-.second {
-  height: 40vh;
+.feature {
+  height: 38.9vh;
   width: auto;
 }
 

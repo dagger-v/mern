@@ -10,6 +10,7 @@ import { useWriteMutation } from "../slices/articlesApiSlice";
 const Write = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [placement, setPlacement] = useState("");
 
   const navigate = useNavigate();
 
@@ -20,10 +21,14 @@ const Write = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
+    const username = userInfo.name;
+
     try {
       const res = await write({
         title,
         content,
+        username,
+        placement,
       }).unwrap();
       navigate("/");
       toast.success("Article Added!");
@@ -34,7 +39,7 @@ const Write = () => {
 
   return (
     <FormContainer>
-      <h1>Update Profile</h1>
+      <h1>Write Article</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group className="my-2" controlId="title">
           <Form.Label>Title</Form.Label>
@@ -54,6 +59,17 @@ const Write = () => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           ></Form.Control>
+        </Form.Group>
+
+        <Form.Group className="my-2" controlId="content">
+          <select
+            value={placement}
+            onChange={(e) => setPlacement(e.target.value)}
+          >
+            <option value="featured">Featured</option>
+            <option value="stories">Story</option>
+            <option value="card">Card</option>
+          </select>
         </Form.Group>
 
         {isLoading && <Loader />}

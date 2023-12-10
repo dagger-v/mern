@@ -10,9 +10,10 @@ const articleSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    author: { type: String, ref: "User", required: true },
     placement: {
       type: String,
-      enum: ["featured", "stories", "card"],
+      enum: ["featured", "card", "stories"],
       default: "stories",
     },
   },

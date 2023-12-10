@@ -37,6 +37,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    showArticles: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/showArticles`,
+        method: "GET",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -46,4 +53,5 @@ export const {
   useRegisterMutation,
   useUpdateUserMutation,
   useWriteMutation,
+  useShowArticlesMutation,
 } = usersApiSlice;

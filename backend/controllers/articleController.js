@@ -1,9 +1,10 @@
 import asyncHandler from "express-async-handler";
 import Article from "../models/articleModel.js";
+import User from "../models/userModel.js";
 
 // POST /write
 const writeArticle = asyncHandler(async (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, username } = req.body;
 
   const articleExists = await Article.findOne({ title });
 
@@ -15,6 +16,7 @@ const writeArticle = asyncHandler(async (req, res) => {
   const article = await Article.create({
     title,
     content,
+    author: username,
   });
 
   if (article) {
@@ -22,6 +24,7 @@ const writeArticle = asyncHandler(async (req, res) => {
       _id: article._id,
       title: article.title,
       content: article.content,
+      author: article.author,
     });
   } else {
     res.status(400);

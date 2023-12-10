@@ -100,7 +100,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 // POST /write
 const writeArticle = asyncHandler(async (req, res) => {
-  const { title, content } = req.body;
+  const { title, content, username, placement } = req.body;
 
   const articleExists = await Article.findOne({ title });
 
@@ -112,6 +112,8 @@ const writeArticle = asyncHandler(async (req, res) => {
   const article = await Article.create({
     title,
     content,
+    author: username,
+    placement,
   });
 
   if (article) {
@@ -119,11 +121,37 @@ const writeArticle = asyncHandler(async (req, res) => {
       _id: article._id,
       title: article.title,
       content: article.content,
+      author: article.author,
+      placement: article.placement,
     });
   } else {
     res.status(400);
     throw new Error("Invalid Article Data");
   }
+});
+
+// GET /showArticles
+const showFeaturedArticles = asyncHandler(async (req, res) => {
+  const featuredArticles = await Article.find({ placement: "featured" })
+    .limit(2)
+    .sort({ createdAt: -1 });
+  res.status(200).json(featuredArticles);
+});
+
+// GET /showArticles
+const showStoriesArticles = asyncHandler(async (req, res) => {
+  const storyArticles = await Article.find({ placement: "stories" })
+    .limit(8)
+    .sort({ createdAt: -1 });
+  res.status(200).json(storyArticles);
+});
+
+// GET /showArticles
+const showCardArticles = asyncHandler(async (req, res) => {
+  const cardArticles = await Article.find({ placement: "card" })
+    .limit(20)
+    .sort({ createdAt: -1 });
+  res.status(200).json(cardArticles);
 });
 
 export {
@@ -133,4 +161,7 @@ export {
   getUserProfile,
   updateUserProfile,
   writeArticle,
+  showFeaturedArticles,
+  showCardArticles,
+  showStoriesArticles,
 };
