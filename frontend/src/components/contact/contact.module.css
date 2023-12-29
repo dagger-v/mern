@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 50px 0;
+  text-align: center;
+}
+
+span {
+  font-weight: 600;
+}
+
+.pink {
+  color: #f875aa;
+}

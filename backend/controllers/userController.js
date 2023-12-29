@@ -100,7 +100,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 // POST /write
 const writeArticle = asyncHandler(async (req, res) => {
-  const { title, content, username, placement } = req.body;
+  const { title, content, image, username, placement, tag } = req.body;
 
   const articleExists = await Article.findOne({ title });
 
@@ -112,8 +112,10 @@ const writeArticle = asyncHandler(async (req, res) => {
   const article = await Article.create({
     title,
     content,
+    image,
     author: username,
     placement,
+    tag,
   });
 
   if (article) {
@@ -121,13 +123,30 @@ const writeArticle = asyncHandler(async (req, res) => {
       _id: article._id,
       title: article.title,
       content: article.content,
+      image: article.image,
       author: article.author,
       placement: article.placement,
+      tag: article.tag,
     });
   } else {
     res.status(400);
     throw new Error("Invalid Article Data");
   }
+});
+
+// GET /showArticles
+const showAllArticles = asyncHandler(async (req, res) => {
+  const allArticles = await Article.find().sort({ createdAt: -1 });
+  res.status(200).json(allArticles);
+});
+
+// GET /showArticles
+const viewArticle = asyncHandler(async (req, res) => {
+  const postId = req.params.id;
+
+  const viewArticle = await Article.findById(postId);
+  res.status(200).json(viewArticle);
+  console.log(`id: ${postId}`);
 });
 
 // GET /showArticles
@@ -161,6 +180,8 @@ export {
   getUserProfile,
   updateUserProfile,
   writeArticle,
+  showAllArticles,
+  viewArticle,
   showFeaturedArticles,
   showCardArticles,
   showStoriesArticles,

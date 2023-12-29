@@ -17,11 +17,29 @@
 
 .imgContainer {
   display: flex;
-  gap: 20px;
+  gap: 48px;
+}
+
+.link {
+  background-color: #000;
+  position: relative;
+  text-align: center;
+}
+
+.link:hover img {
+  opacity: 0.5;
+}
+
+.text {
+  color: #fff !important;
+  font-weight: 700;
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
 }
 
 .feature {
-  height: 38.9vh;
+  height: 38.6vh;
   width: auto;
 }
 

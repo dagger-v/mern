@@ -16,7 +16,10 @@ import HomeScreen from "./screens/HomeScreen.jsx";
 import LoginScreen from "./screens/LoginScreen.jsx";
 import RegisterScreen from "./screens/RegisterScreen.jsx";
 import ProfileScreen from "./screens/ProfileScreen";
-import Write from "./components/Write.jsx";
+import Write from "./components/write/Write.jsx";
+import Articles from "./components/articles/Articles.jsx";
+import SingleArticle from "./components/SingleArticle/SingleArticle.jsx";
+import Contact from "./components/contact/Contact.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +33,9 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route path="/write" element={<Write />} />
       </Route>
+      <Route path="/articles" element={<Articles />} />
+      <Route path="/article/:id" element={<SingleArticle />} />
+      <Route path="/contact" element={<Contact />} />
     </Route>
   )
 );

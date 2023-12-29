@@ -18,7 +18,10 @@ const Featured = () => {
       <div className={styles.post}>
         <div className={styles.imgContainer}>
           {data.map((item) => (
-            <img src="/games23.png" alt="" fill className={styles.feature} />
+            <a href={`/article/${item._id}`} className={styles.link}>
+              <img src={item.image} alt="" className={styles.feature} />
+              <h1 className={styles.text}> {item.title} </h1>
+            </a>
           ))}
         </div>
       </div>

@@ -1,6 +1,9 @@
+.footer {
+  background-color: #080808;
+}
+
 .container {
-  margin-top: 50px;
-  padding: 20px 0;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,6 +24,7 @@
 }
 
 .logoText {
+  color: #fff !important;
   font-size: 1.2rem;
 }
 
@@ -35,6 +39,7 @@
 }
 
 .links {
+  color: #fff !important;
   flex: 1;
   display: flex;
   justify-content: flex-end;
@@ -50,6 +55,10 @@
 
 .listTitle {
   font-weight: bold;
+}
+
+.desc {
+  color: #fff !important;
 }
 
 @media screen and (max-width: 1024px) {

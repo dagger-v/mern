@@ -2,15 +2,19 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Form, Button } from "react-bootstrap";
-import FormContainer from "../components/FormContainer";
+import FormContainer from "../../components/FormContainer";
 import { toast } from "react-toastify";
-import Loader from "../components/Loader";
-import { useWriteMutation } from "../slices/articlesApiSlice";
+import Loader from "../../components/Loader";
+import { useWriteMutation } from "../../slices/articlesApiSlice";
+import { storage } from "../../firebase.js";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const Write = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [placement, setPlacement] = useState("");
+  const [image, setImage] = useState(null);
+  const [tag, setTag] = useState("");
 
   const navigate = useNavigate();
 
@@ -18,10 +22,22 @@ const Write = () => {
 
   const [write, { isLoading }] = useWriteMutation();
 
+  const handleImageChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
 
     const username = userInfo.name;
+
+    const imageName = image.name;
+    const imageRef = ref(storage, `images/${imageName}`);
+
+    const snapshot = await uploadBytes(imageRef, image);
+    const url = await getDownloadURL(snapshot.ref);
 
     try {
       const res = await write({
@@ -29,6 +45,8 @@ const Write = () => {
         content,
         username,
         placement,
+        image: url,
+        tag,
       }).unwrap();
       navigate("/");
       toast.success("Article Added!");
@@ -53,12 +71,14 @@ const Write = () => {
 
         <Form.Group className="my-2" controlId="content">
           <Form.Label>Content</Form.Label>
-          <Form.Control
+          <textarea
             type="text"
             placeholder="Content"
             value={content}
+            rows="5"
+            cols="70"
             onChange={(e) => setContent(e.target.value)}
-          ></Form.Control>
+          ></textarea>
         </Form.Group>
 
         <Form.Group className="my-2" controlId="content">
@@ -66,9 +86,29 @@ const Write = () => {
             value={placement}
             onChange={(e) => setPlacement(e.target.value)}
           >
+            <option value=""></option>
             <option value="featured">Featured</option>
             <option value="stories">Story</option>
             <option value="card">Card</option>
+          </select>
+        </Form.Group>
+
+        <Form.Group className="my-2" controlId="content">
+          <label>Image</label>
+          <input
+            type="file"
+            placeholder="Image"
+            onChange={handleImageChange}
+          ></input>
+        </Form.Group>
+
+        <Form.Group className="my-2" controlId="content">
+          <select value={tag} onChange={(e) => setTag(e.target.value)}>
+            <option value=""></option>
+            <option value="games">Video Games</option>
+            <option value="anime">Anime</option>
+            <option value="comics">Comics</option>
+            <option value="music">Music</option>
           </select>
         </Form.Group>
 

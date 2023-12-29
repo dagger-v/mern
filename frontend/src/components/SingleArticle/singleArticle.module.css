@@ -1,0 +1,12 @@
+.image {
+  height: 492px;
+  width: 949px;
+}
+
+.content {
+  margin-top: 50px;
+}
+
+.text {
+  white-space: pre-wrap;
+}

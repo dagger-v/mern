@@ -10,11 +10,16 @@ const articleSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    image: { type: String },
     author: { type: String, ref: "User", required: true },
     placement: {
       type: String,
       enum: ["featured", "card", "stories"],
       default: "stories",
+    },
+    tag: {
+      type: String,
+      enum: ["games", "anime", "comics", "music"],
     },
   },
   {

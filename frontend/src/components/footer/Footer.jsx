@@ -1,53 +1,46 @@
-import React from "react";
+import { Navbar } from "react-bootstrap";
 import styles from "./footer.module.css";
-import Image from "next/image";
-import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className={styles.container}>
-      <div className={styles.info}>
-        <div className={styles.logo}>
-          <Image src="/logo.png" alt="verdant blog" width={50} height={50} />
-          <h1 className={styles.logoText}>Verdant</h1>
+    <Navbar variant="dark" expand="lg" className={styles.footer}>
+      <div className={styles.container}>
+        <div className={styles.info}>
+          <div className={styles.logo}>
+            <h1 className={styles.logoText}>Verdant</h1>
+          </div>
+          <p className={styles.desc}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo,
+            debitis perspiciatis mollitia deserunt odio animi vitae facilis
+            eveniet, sunt eligendi hic cum culpa obcaecati recusandae ullam
+            repellat placeat, tempora ipsa.
+          </p>
         </div>
-        <p className={styles.desc}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo,
-          debitis perspiciatis mollitia deserunt odio animi vitae facilis
-          eveniet, sunt eligendi hic cum culpa obcaecati recusandae ullam
-          repellat placeat, tempora ipsa.
-        </p>
-        <div className={styles.icons}>
-          <Image src="/facebook.png" alt="" width={18} height={18} />
-          <Image src="/instagram.png" alt="" width={18} height={18} />
-          <Image src="/tiktok.png" alt="" width={18} height={18} />
-          <Image src="/youtube.png" alt="" width={18} height={18} />
-        </div>
-      </div>
-      <div className={styles.links}>
-        <div className={styles.list}>
-          <span className={styles.listTitle}>Links</span>
-          <Link href="/">Homepage</Link>
-          <Link href="/">Blog</Link>
-          <Link href="/">About</Link>
-          <Link href="/">Contact</Link>
-        </div>
-        <div className={styles.list}>
-          <span className={styles.listTitle}>Tags</span>
-          <Link href="/">Style</Link>
-          <Link href="/">Fashion</Link>
-          <Link href="/">Coding</Link>
-          <Link href="/">Travel</Link>
-        </div>
-        <div className={styles.list}>
-          <span className={styles.listTitle}>Social</span>
-          <Link href="/">Facebook</Link>
-          <Link href="/">Instagram</Link>
-          <Link href="/">TikTok</Link>
-          <Link href="/">YouTube</Link>
+        <div className={styles.links}>
+          <div className={styles.list}>
+            <span className={styles.listTitle}>Links</span>
+            <a href="/">Homepage</a>
+            <a href="/">Blog</a>
+            <a href="/">About</a>
+            <a href="/">Contact</a>
+          </div>
+          <div className={styles.list}>
+            <span className={styles.listTitle}>Tags</span>
+            <a href="/">Style</a>
+            <a href="/">Fashion</a>
+            <a href="/">Coding</a>
+            <a href="/">Travel</a>
+          </div>
+          <div className={styles.list}>
+            <span className={styles.listTitle}>Social</span>
+            <a href="/">Facebook</a>
+            <a href="/">Instagram</a>
+            <a href="/">TikTok</a>
+            <a href="/">YouTube</a>
+          </div>
         </div>
       </div>
-    </div>
+    </Navbar>
   );
 };
 

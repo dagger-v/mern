@@ -3,10 +3,12 @@ import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { useLogoutMutation } from "../slices/usersApiSlice";
-import { logout } from "../slices/authSlice";
+import { useLogoutMutation } from "../../slices/usersApiSlice";
+import { logout } from "../../slices/authSlice";
+import Slider from "../slider/Slider";
+import styles from "./header.module.css";
 
-const Header = () => {
+const Header = (props) => {
   const { userInfo } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -25,22 +27,27 @@ const Header = () => {
   };
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar
+        variant="dark"
+        expand="lg"
+        collapseOnSelect
+        className={styles.header}
+      >
         <Container className="nav_container">
           <LinkContainer to="/">
             <Navbar.Brand>Verdant</Navbar.Brand>
           </LinkContainer>
-          <LinkContainer to="/articles" className="nav_links">
-            <Nav.Link>Articles</Nav.Link>
+          <LinkContainer to="/articles">
+            <a className="nav_links">Articles</a>
           </LinkContainer>
-          <LinkContainer to="/categories" className="nav_links">
-            <Nav.Link>Categories</Nav.Link>
-          </LinkContainer>
-          <LinkContainer to="/contact" className="nav_links">
-            <Nav.Link>Contact Us</Nav.Link>
+          <LinkContainer to="/contact">
+            <a className="nav_links">Contact Us</a>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <div onChange={props.toggleTheme}>
+              <Slider />
+            </div>
             <Nav className="ms-auto">
               {userInfo ? (
                 <>

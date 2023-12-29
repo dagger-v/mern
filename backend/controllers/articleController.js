@@ -4,7 +4,7 @@ import User from "../models/userModel.js";
 
 // POST /write
 const writeArticle = asyncHandler(async (req, res) => {
-  const { title, content, username } = req.body;
+  const { title, content, username, tag } = req.body;
 
   const articleExists = await Article.findOne({ title });
 
@@ -17,6 +17,8 @@ const writeArticle = asyncHandler(async (req, res) => {
     title,
     content,
     author: username,
+    placement,
+    tag,
   });
 
   if (article) {
@@ -25,6 +27,8 @@ const writeArticle = asyncHandler(async (req, res) => {
       title: article.title,
       content: article.content,
       author: article.author,
+      placement: article.placement,
+      tag: article.tag,
     });
   } else {
     res.status(400);

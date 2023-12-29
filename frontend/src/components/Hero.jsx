@@ -3,7 +3,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import Featured from "./featured/Featured";
 import CardList from "./cardList/CardList";
 import Menu from "./Menu/Menu";
-import Stories from "./Stories";
+import Stories from "./stories/Stories";
 
 const Hero = () => {
   return (

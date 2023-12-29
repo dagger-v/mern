@@ -5,7 +5,7 @@ a {
 }
 
 .content {
-  margin-top: 2em;
+  margin-top: 5em;
 }
 
 .container {
@@ -14,9 +14,13 @@ a {
 }
 
 .wrapper {
+  border: 1px solid #f9f9fb;
+  border-radius: 10px;
+  background-color: #f9f9fb;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   display: flex;
-  padding: 2px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  width: 80%;
 }
 
 .detail {
@@ -35,7 +39,6 @@ a {
   border-radius: 17px;
   width: 300px;
   height: 157px;
-  padding-left: 0 !important;
 }
 
 .textContainer {
@@ -47,7 +50,11 @@ a {
 }
 
 .date {
-  color: #b6b6b6;
+  color: #424242;
+}
+
+.author {
+  color: #3081d0;
 }
 
 .category {
@@ -59,10 +66,6 @@ a {
   font-size: 0.8;
   font-weight: 300;
   color: var(--softTextColor);
-}
-
-.author {
-  color: #3081d0;
 }
 
 .link {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./stories.module.css";
 import axios from "axios";
 
 const Stories = () => {
@@ -12,14 +13,16 @@ const Stories = () => {
       });
   }, []);
   return (
-    <div className="stories">
+    <div className={styles.container}>
       {data.map((item) => (
-        <>
-          <div>
-            <img src="/anime23.png" alt="" className="story" />
-            <p className="story-text">{item.title}</p>
+        <div className={styles.feature}>
+          <div className={styles.wrapper}>
+            <a href={`/article/${item._id}`} className={styles.link}>
+              <img src={item.image} alt="" className={styles.image} />
+              <p className={styles.text}> {item.title} </p>
+            </a>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );
