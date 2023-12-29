@@ -105,7 +105,7 @@ const Write = () => {
         <Form.Group className="my-2" controlId="content">
           <select value={tag} onChange={(e) => setTag(e.target.value)}>
             <option value=""></option>
-            <option value="games">Video Games</option>
+            <option value="games">Games</option>
             <option value="anime">Anime</option>
             <option value="comics">Comics</option>
             <option value="music">Music</option>

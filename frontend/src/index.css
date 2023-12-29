@@ -1,20 +1,3 @@
-.nav_container {
-  display: flex;
-  gap: 10px;
-}
-
-.nav_links {
-  color: #fff;
-}
-
-.nav_links:hover {
-  color: #f875aa;
-}
-
-.footer {
-  color: #fff;
-}
-
 #light {
   background-color: #fff;
 }

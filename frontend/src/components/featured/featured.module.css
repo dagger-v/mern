@@ -17,7 +17,7 @@
 
 .imgContainer {
   display: flex;
-  gap: 48px;
+  gap: 44px;
 }
 
 .link {
@@ -39,7 +39,7 @@
 }
 
 .feature {
-  height: 38.6vh;
+  height: 38.8vh;
   width: auto;
 }
 

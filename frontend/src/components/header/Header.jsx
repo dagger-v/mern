@@ -33,15 +33,18 @@ const Header = (props) => {
         collapseOnSelect
         className={styles.header}
       >
-        <Container className="nav_container">
+        <Container className={styles.container}>
           <LinkContainer to="/">
             <Navbar.Brand>Verdant</Navbar.Brand>
           </LinkContainer>
           <LinkContainer to="/articles">
-            <a className="nav_links">Articles</a>
+            <a className={styles.links}>Articles</a>
+          </LinkContainer>
+          <LinkContainer to="/blog">
+            <a className={styles.links}>Blog</a>
           </LinkContainer>
           <LinkContainer to="/contact">
-            <a className="nav_links">Contact Us</a>
+            <a className={styles.links}>Contact</a>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

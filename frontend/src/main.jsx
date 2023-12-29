@@ -19,6 +19,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import Write from "./components/write/Write.jsx";
 import Articles from "./components/articles/Articles.jsx";
 import SingleArticle from "./components/SingleArticle/SingleArticle.jsx";
+import Blog from "./components/blog/Blog.jsx";
 import Contact from "./components/contact/Contact.jsx";
 
 const router = createBrowserRouter(
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/articles" element={<Articles />} />
       <Route path="/article/:id" element={<SingleArticle />} />
+      <Route path="/blog" element={<Blog />} />
       <Route path="/contact" element={<Contact />} />
     </Route>
   )
